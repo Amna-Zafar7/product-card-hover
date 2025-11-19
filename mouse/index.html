@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Product Card</title>
+</head>
+
+<body class="min-h-screen bg-neutral-900 flex justify-center items-center">
+
+  <div class="bg-white shadow-xl rounded-2xl p-6 w-80">
+
+      <!-- Main Image -->
+      <div id="card" class="w-full h-64 mb-4">
+        <img id="mainImage"
+             src="jor.jpg"
+             class="w-full h-full object-cover rounded-xl transition-all duration-300"
+             alt="Product">
+      </div>
+
+      <!-- Small Option Images -->
+      <div class="flex gap-3 justify-center mb-5">
+          <img src="air.jpg"
+               class="optionImg w-16 h-16 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition"
+               data-img="air.jpg">
+
+          <img src="nike.jpg"
+               class="optionImg w-16 h-16 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition"
+               data-img="nike.jpg">
+
+          <img src="shoes.jpeg"
+               class="optionImg w-16 h-16 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition"
+               data-img="shoes.jpeg">
+      </div>
+
+      <!-- Product Details -->
+      <h2 class="text-xl font-semibold mb-1">Nike Jordan Custom Air</h2>
+      <p class="text-gray-600 text-sm mb-3">
+         Premium Nike Jordan + Custom Air design with soft cushioning, bold style, and all-day comfort.
+      </p>
+
+      <!-- Price + Button -->
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-bold text-green-600">$120</span>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          Add to Cart
+        </button>
+      </div>
+
+  </div>
+
+  <script>
+    const card = document.getElementById("card");
+    const mainImg = document.getElementById("mainImage");
+
+    const defaultSrc = "shoes.jpeg";
+    const hoverSrc = "air.jpg";
+
+    // Hover effect
+    card.addEventListener("mouseenter", () => {
+        mainImg.src = hoverSrc;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        mainImg.src = defaultSrc;
+    });
+
+    // Click small images
+    const optionImages = document.querySelectorAll(".optionImg");
+    optionImages.forEach(img => {
+        img.addEventListener("click", () => {
+            const newSrc = img.getAttribute("data-img");
+            mainImg.src = newSrc;
+        });
+    });
+  </script>
+
+</body>
+</html>
